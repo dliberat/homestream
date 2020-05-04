@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Video List{% endblock %}
+
+{% block content %}
+    {% if videos %}
+        <ul class="video-list">
+            {% for video in videos %}
+            <li>
+                <a href="{% url 'video:watch' video.id %}">
+                    <div class="video-list list-item-wrapper">
+                        <div class="video-list-title">{{ video.title|title }}</div>
+                        <div class="video-list-date">{{ video.date_taken|date:"Y-m-d" }}</div>
+                        <div class="video-list-thumbnail">
+                                <div class="play-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 311.69 311.69"><path d="M155.84,0A155.85,155.85,0,1,0,311.69,155.84,155.84,155.84,0,0,0,155.84,0Zm0,296.42A140.58,140.58,0,1,1,296.42,155.84,140.58,140.58,0,0,1,155.84,296.42Z"/><polygon points="218.79 155.84 119.22 94.34 119.22 217.34 218.79 155.84"/></svg>
+                                </div>
+
+                                {% if video.thumbnail %}
+                                    <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}" class="video-thumbnail">
+                                {% else %}
+                                    <img src="{% static 'default_420x270.png' %}" alt="{{ video.title }}" class="video-thumbnail">
+                                {% endif %}
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="margin: auto; text-align: center;">There are no videos available</p>
+    {% endif %}
+{% endblock %}

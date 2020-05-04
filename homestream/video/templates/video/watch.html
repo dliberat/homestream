@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ video.title }}{% endblock %}
+
+
+{% block content %}
+
+    <div class="watch-title">{{ video.title }}</div>
+
+    <div class="watch-wrapper">
+
+        <video name='demo' controls autoplay width='50%'>
+            <source
+                src="{{ video.file_obj.url }}"
+                type="{{ video.mime_type }}">
+            </source>
+            <p>HTML5 support is needed to play videos. Upgrade your browser.</p>
+        </video>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.db
+  web:
+    build: ./homestream
+    entrypoint: /home/homestream/web/runserver.prod.sh
+    command: gunicorn homestream.wsgi:application --bind 0.0.0.0:8000
+    expose:
+      - 8000
+    depends_on:
+      - db
+    env_file:
+      - ./.env.prod
+    volumes:
+      - static_volume:/var/www/homestream/static
+      - media_volume:/var/www/homestream/media
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/var/www/homestream/static
+      - media_volume:/var/www/homestream/media
+    ports:
+      - "34500:80"
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:

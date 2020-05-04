@@ -1,0 +1,133 @@
+/*
+433E0E
+EDEEC0
+7C9082
+A7A284
+D0C88E
+*/
+
+body {
+    /* 3em for the header, plus a little extra  */
+    margin-top: 5em;
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+#nav {
+    overflow: hidden;
+    background-color: #7C9082;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+#nav-left {
+    grid-column-start: 1;
+}
+#nav-right {
+    grid-column-start: 2;
+    justify-self: right;
+}
+
+#nav a {
+    float: left;
+    display: block;
+    color: #EDEEC0;
+    text-align: center;
+    padding: 1em;
+    text-decoration: none;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+#nav a:hover {
+    background-color: #433E0E;
+    color: #EDEEC0;
+}
+
+#login-userform-wrapper {
+    margin: auto;
+    text-align: center; 
+}
+
+#login-userform-wrapper table {
+    margin: auto auto 1em auto;
+    border-spacing: 8px;
+}
+
+
+#login-userform-wrapper input[type=submit] {
+    text-transform: uppercase;
+}
+
+/* LIST */
+
+ul.video-list {
+    list-style: none;
+}
+
+.video-list {
+    transition: fill .2s ease;
+    fill: rgba(124, 144, 130, 0.7);
+}
+
+.video-list a {
+    text-decoration: none;
+    color: black;
+}
+
+.video-list.list-item-wrapper {
+    display: grid;
+    grid-template-columns: 166px auto;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+    "thumbnail title"
+    "thumbnail date"
+    "thumbnail ."
+}
+
+.video-list img {
+    max-width: 160px;     
+}
+
+.video-list-thumbnail {
+    grid-area: thumbnail;
+    padding-right: 6px;
+    position: relative;
+}
+.video-list-thumbnail .play-btn {
+    position: absolute;
+    max-width: 50px;
+    max-height: 50px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.video-list:hover,
+.video-list:focus {
+    cursor: pointer;
+    fill: rgba(237, 238, 192, 0.8);
+}
+
+.video-list-title {
+    grid-area: title;
+}
+.video-list-date {
+    grid-area: date;
+    font-size: 0.75em;
+}
+
+
+/* WATCH */
+.watch-title {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.watch-wrapper {
+    margin: 1em auto;
+    text-align: center;
+}
