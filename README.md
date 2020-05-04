@@ -47,6 +47,7 @@ The first time you perform these actions Docker will download and build the imag
 To view the app, navigate to the appropriate location in your web browser.
 
 __Development mode:__ http://localhost:8000/video/
+
 __Production mode:__ http://localhost:34500/video/
 
 ## Uploading videos
